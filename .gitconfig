@@ -1,0 +1,24 @@
+[user]
+  name = Torkild Retvedt
+  email = torkild@retvedt.no
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow bold
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[log]
+  default = --stat
