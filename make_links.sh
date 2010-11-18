@@ -10,7 +10,7 @@ for file in $(find -type f ! -path "./.git/*" -a -! -path $0); do
 
     if [ ! -f ~/${file} ]; then
         echo "Creating symlink: ${base} -> ~/${base}"
-        ln -s "${reldir}/${base}" ~/${base}
+        ln -s "$curdir/${base}" ~/${base}
     else
         echo "Symlink already in place: ~/${base}"
     fi
