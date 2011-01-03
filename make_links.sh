@@ -17,7 +17,7 @@ while getopts ":f" opt; do
     esac
 done
 
-for file in $(find -type f ! -path "./.git/*" -a -! -path $0); do
+for file in $(find . -type f ! -path "./.git/*" -a ! -path $0); do
 
     base=${file:2}
 
