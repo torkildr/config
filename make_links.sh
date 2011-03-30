@@ -1,32 +1,50 @@
 #!/bin/bash
 
-userdir=$(echo ~)
+userdir=~
 curdir=$(pwd)
 reldir=${curdir:${#userdir}+1}
 
-force=0
+force=""
 
-while getopts ":f" opt; do
+# set -o xtrace
+while getopts "hfdu:" opt; do
     case $opt in
         f)
-            force=1
+            force="-f"
             ;;
+        d)
+            dryrun=1
+            ;;
+        u)
+            userdir=$OPTARG
+            ;;
+        h)
+            cat << EOF
+Usage:
+ -f     force
+ -d     dryrun
+ -u     specify the user-dir (defaults to ${userdir}
+ -h     halps!
+EOF
+        exit 1
+        ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
             ;;
     esac
 done
 
+[[ -n $dryrun ]] && echo Doing dryrun.
+
+echo Inserting symlinks into ${userdir}
+
 for file in $(find . -type f ! -path "./.git/*" -a ! -path $0); do
 
     base=${file:2}
 
-    if [ $force -eq 1 -o ! -f ~/${file} ]; then
-        echo "Creating symlink: ${base} -> ~/${base}"
-        ln -sf "$curdir/${base}" ~/${base}
-    else
-        echo "Symlink already in place: ~/${base}"
-    fi
+    echo "Creating symlink: ${curdir}/${base} -> ${userdir}/${base}"
+    [[ -z $dryrun ]] && 
+        ln -s ${force} "$curdir/${base}" ${userdir}/${base}
 
 done
 
