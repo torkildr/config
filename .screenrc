@@ -9,11 +9,5 @@ msgwait 2
 
 startup_message off
 
-bind k
-bind ^k
-bind K kill
-
-bindkey -m "^B" eval "stuff ' '" writebuf "exec $HOME/.screen/openuri > /dev/null"
-
-caption always "%{= kb}[ %{G}%H::$USER %{b}][ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %Y.%m.%d %{W}%0c %{b}]"
+caption always "%{= kb}[ %{G}$USER@%H %{b}][ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %Y.%m.%d %{W}%0c %{b}]"
 sorendition +b kG
