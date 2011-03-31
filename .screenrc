@@ -1,4 +1,4 @@
-shell -bash
+shell bash
 activity ""
 bell ""
 vbell off
