@@ -6,6 +6,7 @@
   branch = auto
   diff = auto
   status = auto
+  ui = auto
 [color "branch"]
   current = yellow bold
   local = yellow
@@ -22,3 +23,5 @@
 
 [log]
   default = --stat
+[alias]
+  praise = blame
