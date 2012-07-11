@@ -46,6 +46,7 @@ for file in $(find . -type f ! -path "./.git/*" -a ! -path $0); do
     echo "Creating symlink: ${curdir}/${base} -> ${userdir}/${base}"
     [[ -z $dryrun ]] && 
         ln -s ${force} "$curdir/${base}" ${userdir}/${base}
-
 done
+
+echo
 
