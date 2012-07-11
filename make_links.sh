@@ -36,6 +36,7 @@ done
 
 [[ -n $dryrun ]] && echo Doing dryrun.
 
+echo
 echo Inserting symlinks into ${userdir}
 
 for file in $(find . -type f ! -path "./.git/*" -a ! -path $0); do
