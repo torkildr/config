@@ -39,7 +39,7 @@ done
 echo
 echo Inserting symlinks into ${userdir}
 
-for file in $(find . -type f ! -path "./.git/*" -a ! -path $0); do
+for file in $(find . -type f ! -path "./.git/*" -a ! -path "./git-hooks/*" -a ! -path $0); do
 
     base=${file:2}
 
