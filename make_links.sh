@@ -1,10 +1,12 @@
 #!/bin/bash
 
 userdir=~
-curdir=$(pwd)
+curdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 reldir=${curdir:${#userdir}+1}
 
 force=""
+
+cd $curdir
 
 # set -o xtrace
 while getopts "hfdu:" opt; do
@@ -44,9 +46,11 @@ for file in $(find . -type f ! -path "./.git/*" -a ! -path "./git-hooks/*" -a ! 
     base=${file:2}
 
     echo "Creating symlink: ${curdir}/${base} -> ${userdir}/${base}"
-    [[ -z $dryrun ]] && 
+    [[ -z $dryrun ]] &&
         ln -s ${force} "$curdir/${base}" ${userdir}/${base}
 done
+
+cd $OLDPWD
 
 echo
 
