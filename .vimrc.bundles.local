@@ -1,7 +1,0 @@
-
-"" Nginx highlighting
-
-Bundle 'vim-scripts/nginx.vim'
-autocmd BufRead,BufNewFile /etc/nginx/sites-enabled/* set syntax=nginx
-autocmd BufRead,BufNewFile /etc/nginx/sites-available/* set syntax=nginx
-
